@@ -14,3 +14,16 @@ nextButton.addEventListener('click', function() {
 
     }
 })
+
+const bgMusic = document.getElementById('bg-music');
+let hasStarted = false;
+
+window.addEventListener("scroll", () => {
+    if (!hasStarted){
+        bgMusic.volume = 0.2; // Set the volume to a lower level
+        bgMusic.play().catch((e) => {
+            console.log("Autolplay blocked: ", e.message);
+        });
+        hasStarted = true; // Prevent further attempts to play the music
+    }
+} );
